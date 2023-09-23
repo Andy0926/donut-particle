@@ -1,17 +1,27 @@
 import { OrbitControls, Sphere } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Color, Group, Object3DEventMap, Vector3 } from "three";
 import { pointsInner, pointsOuter } from "./util";
+import GUI from "lil-gui";
 
 export default function TheadLanding() {
+  const [lightPower, setLightPower] = useState(10); // initial power value
+
+  useEffect(() => {
+    const gui = new GUI();
+    gui
+      .add({ power: lightPower }, "power", 0, 100)
+      .onChange((value) => setLightPower(value));
+    return () => gui.destroy();
+  }, [lightPower]);
+
   return (
     <div className="relative h-[100vh] w-[100vw">
       <Canvas className="bg-[#101010]">
-        {/* <OrthographicCamera position={[0, 0, 10]} /> */}
-        <OrbitControls maxDistance={20} minDistance={5} />
+        <OrbitControls maxDistance={20} minDistance={20} />
         <directionalLight />
-        <pointLight position={[0, 0, 0]} power={10} />
+        <pointLight position={[0, 0, 0]} power={lightPower} />
         <PointCircleGroup />
       </Canvas>
     </div>
@@ -40,7 +50,7 @@ const PointCircleGroup = () => {
       setIsFirstrender(false); //trigger re-render lol
     }
     shader.uniforms.u_time.value = clock.getElapsedTime();
-    console.log(shader.uniforms.u_time.value);
+    // console.log(shader.uniforms.u_time.value);
     time.current = clock.getElapsedTime();
   });
 
