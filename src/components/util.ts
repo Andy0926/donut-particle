@@ -1,3 +1,4 @@
+/* eslint-disable */
 const MIN_RADIUS = 7.5;
 const MAX_RADIUS = 15;
 const DEPTH = 2;
