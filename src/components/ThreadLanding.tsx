@@ -84,7 +84,7 @@ const PointCircle = ({
   // });
   console.log("re-renderr");
   return (
-    <Sphere position={position} args={[0.25, 10, 10]}>
+    <Sphere position={position} args={[0.3, 10, 10]}>
       <shaderMaterial args={[shader]} />
       <meshStandardMaterial
         color={color}
