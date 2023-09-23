@@ -73,7 +73,9 @@ const PointCircle = ({
   shader,
 }: {
   color: Color | string;
-  position: Vector3 | undefined;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  position: Vector3 | any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   shader: any;
 }) => {
   // useFrame(({ clock }) => {

@@ -50,7 +50,7 @@ export const pointsInner = Array.from(
 
 export const pointsOuter = Array.from(
   { length: NUM_POINTS / 4 },
-  (v, k) => k + 1
+  (_v, k) => k + 1
 ).map((num) => {
   const randomRadius = randomFromInterval(MIN_RADIUS / 2, MAX_RADIUS * 2);
   const randomAngle = Math.random() * Math.PI * 2;
